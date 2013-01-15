@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE struts PUBLIC     
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"     
+    "http://struts.apache.org/dtds/struts-2.0.dtd">    
+<struts>  
+    <package name="struts2" extends="struts-default">  
+        <action name="loginAction" class="com.jiyi.user.action.LoginAction">  
+            <result name="SUCCESS">/success.jsp</result> 
+            <result name="FAILED">/failed.jsp</result> 
+            <result name="input">/index.jsp</result>  
+        </action>  
+    </package>  
+</struts>    
