@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.pfizer.model.Employee" 
+        table="employee">
+ 
+        <id name="empId" type="string">
+     		<generator class="assigned"/>
+        </id>
+        <property name="firstName" type="string"/>
+        <property name="lastName" type="string"/>
+        <property name="dateOfBirth" type="timestamp"/> 
+        <property name="address1" type="string"/>
+        <property name="address2" type="string"/>
+        <property name="address3" type="string"/>
+        <property name="city" type="string"/>
+        <property name="state" type="string"/>
+        <property name="country" type="string"/>
+        <property name="zip" type="int"/>
+        <property name="email" type="string"/>
+        <property name="phone" type="string"/>
+        <joined-subclass name="com.pfizer.model.Doctor"  table="doctor">
+           <key column="empId"/>
+           <property name="doctorId"/>
+           <property name="specicalist"/>
+           <set name="bills" table="bill" inverse="true" >
+           		<key column="billId"/>
+            	<one-to-many class="com.pfizer.model.Bill"/>
+           </set>
+      	</joined-subclass>
+      	<joined-subclass name="com.pfizer.model.Receptionist"  table="receptionist">
+      		<key column="empId"/>
+           <property name="recepId"/>
+      	</joined-subclass>
+      	<joined-subclass name="com.pfizer.model.Patient"  table="patient">
+           <key column="empId"/>
+           <property name="patientId"/>
+           <property name="pps"/>
+           <property name="decease"/>
+           <property name="medHistory"/>
+           <many-to-one name="insurance" class="com.pfizer.model.Insurance" column="insuranceId" lazy="false" cascade="all"/>
+           <many-to-one name="payAccount" class="com.pfizer.model.PayAccount" column="accountId" lazy="false" cascade="all" unique="true" />   
+      	</joined-subclass>
+
+    </class>
+</hibernate-mapping>

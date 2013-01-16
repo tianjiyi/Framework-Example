@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui"
+xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<h:outputScript library="js" name="http://code.jquery.com/jquery-latest.js" />
+	<h:outputScript library="js">
+    $ = jQuery; 
+     $(document).ready(function(){
+	  $(".flip").click(function(){
+	      $(".panel").slideToggle("slow");
+	    });
+	  });
+     </h:outputScript>
+</h:head>
+
+<h:body>
+	<ui:composition template="/template/common/commonLayout2.xhtml">
+		<ui:define name="content">
+		<h:outputScript library="js" name="http://code.jquery.com/jquery-latest.js" />
+		<h:outputScript library="js">
+   			 $ = jQuery; 
+     			$(document).ready(function(){
+	 				$(".flip").click(function(){
+	      			$(".panel").slideToggle("slow");
+	    		});
+	  		});
+     	</h:outputScript>
+	<div class="panel" style="display:none">
+		<p>Because time is valuable, we deliver quick and easy learning.</p>
+		<p>At W3Schools, you can study everything you need to learn, in an accessible and handy format.</p>
+	</div>
+	<p class="flip">Show/Hide Panel</p>
+
+		<h:form>
+	<p:calendar size="12" navigator="true" yearRange="1912:2012" 
+	locale="us"></p:calendar>
+	</h:form>
+</ui:define>
+</ui:composition>
+</h:body>
+</html>

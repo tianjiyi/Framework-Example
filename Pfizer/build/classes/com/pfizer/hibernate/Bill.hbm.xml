@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.pfizer.model.Bill" table="bill">
+        <id name="billId" type="string">
+            <generator class="assigned" />
+        </id>
+        <property name="totalBalance" type="double" not-null="true" column="Balance" />
+        <many-to-one name="doctor" class="com.pfizer.model.Doctor" column="doctorId" cascade="all"/>
+        <many-to-one name="payAccount" class="com.pfizer.model.PayAccount" column="accountId" cascade="all"/>
+       
+    </class>
+</hibernate-mapping>

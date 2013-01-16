@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.pfizer.model.PayAccount" table="pay_account">
+        <id name="accountId" type="string" column="ACCOUNT_ID">
+            <generator class="assigned" />
+        </id>
+        <property name="payMethod" type="string"  column="PAYEMENT_METHOD" />
+        <property name="details" type="string"  column="DETAILS" />
+        <one-to-one name="patient"  property-ref="payAccount"/>
+    </class>
+</hibernate-mapping>

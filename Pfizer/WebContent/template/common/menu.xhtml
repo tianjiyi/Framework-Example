@@ -1,0 +1,35 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:f="http://java.sun.com/jsf/core">
+
+
+        <h:form>
+
+                <p:outputPanel id="menuPanel" layout="block">
+                                <p:menu autoSubmenuDisplay="true" style="width:213px;height:483px;border:none;font-size:small;padding:0px;"
+                                        ajax="false" type="sliding" backLabel="menu">
+                                        <p:submenu label="Pages" icon="ui-icon ui-icon-refresh">
+                                        	 	<p:menuitem value="Home_Page"
+                                                        url="/pages/index.xhtml" />
+                                                <p:menuitem value="Schedule_Appointment"
+                                                        url="/pages/schedule.xhtml" />
+                                                <p:menuitem value="Create_new_patient" 
+                                                        url="/pages/newPatientInfo.xhtml" />
+                                                <p:menuitem value="Manage_patient" 
+                                                        url="/pages/patientCheckIn.xhtml" />
+                                                <p:menuitem value="Check_Appointment" 
+                                                        url="/pages/schedule.xhtml" />
+                                   				<p:menuitem value="Generate_Report" 
+                                                        url="/pages/report.xhtml" />
+                                   
+                                   
+                                        </p:submenu>
+                
+                                </p:menu>
+                </p:outputPanel>
+
+        </h:form>
+</ui:composition>

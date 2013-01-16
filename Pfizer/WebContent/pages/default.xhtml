@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+    <h:head>
+    </h:head>
+ 
+    <h:body>
+    
+    
+ 	 	<h:dataTable value="#{customer.getCustomerList()}" var="c"
+    			styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row"
+    		>
+ 
+    		<h:column>
+    			<f:facet name="header">
+    				Customer ID
+    			</f:facet>
+    				#{c.customerId}
+    		</h:column>
+ 
+    		<h:column>
+    			<f:facet name="header">
+    				Name
+				</f:facet>
+    				#{c.name}
+    		</h:column>
+ 
+ 			<h:column>
+    			<f:facet name="header">
+    				Password
+				</f:facet>
+    				#{c.password}
+    		</h:column>
+    		
+    		<h:column>
+    			<f:facet name="header">
+    				Created Date
+				</f:facet>
+    				#{c.createdDate}
+    		</h:column>
+    		
+    	</h:dataTable>   
+    
+ 	
+ 		<h2>Add New Customer</h2>
+ 		<h:form>
+ 			
+ 			<h:panelGrid columns="3">
+			
+				Name : 
+				<h:inputText id="name" value="#{customer.name}" 
+					size="20" required="true"
+					label="Name" >
+				</h:inputText>
+					
+				<h:message for="name" style="color:red" />
+			
+				Password : 
+				<h:inputText id="password" value="#{customer.password}" 
+					size="20" required="true"
+					label="password" >
+				</h:inputText>
+					
+				<h:message for="password" style="color:red" />
+				
+			</h:panelGrid>
+			
+			<h:commandButton value="Submit" action="#{customer.addCustomer()}" />
+
+ 		</h:form>
+  		
+ 		
+    </h:body>
+ 
+</html>

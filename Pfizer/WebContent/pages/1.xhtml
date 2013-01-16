@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:mj="http://mojarra.dev.java.net/mojarra_ext">
+
+<ui:composition template="/template/common/commonLayout.xhtml">
+			<ui:define name="content">
+			<h2>Home page</h2>
+
+			<h:form id="form1" >
+				<h:inputText id="username" value="" size="20" name="name"></h:inputText>
+				
+				<h:commandButton value="submit" action="#{customer.login()}"></h:commandButton>
+			</h:form>
+		</ui:define>
+</ui:composition>
+</html>

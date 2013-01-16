@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+ 
+   	<bean id="appointmentBo" 
+         class="com.pfizer.bo.impl.AppointmentBoImpl" >
+   		<property name="appointmentDao" ref="appointmentDao" />
+   	</bean>
+ 
+   	<bean id="appointmentDao" 
+         class="com.pfizer.dao.impl.AppointmentDaoImpl" >
+   		<property name="sessionFactory" ref="sessionFactory"></property>
+   	</bean>
+ 
+</beans>

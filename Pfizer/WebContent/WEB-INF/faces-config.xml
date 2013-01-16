@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+    version="2.0">
+
+<application>
+    	<el-resolver>
+    		org.springframework.web.jsf.el.SpringBeanFacesELResolver
+    	</el-resolver>
+  	</application>
+ 	<!--  
+	<managed-bean>
+		<managed-bean-name>user</managed-bean-name>
+		<managed-bean-class>com.pfizer.bean.UserBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>userBo</property-name>
+			<value>#{userBo}</value>
+		</managed-property>
+	</managed-bean>
+	-->
+	<!-- 
+	<managed-bean>
+		<managed-bean-name>patient</managed-bean-name>
+		<managed-bean-class>com.pfizer.bean.UserBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>userBo</property-name>
+			<value>#{userBo}</value>
+		</managed-property>
+	</managed-bean>
+	-->
+	<!--  
+	<navigation-rule>
+        <description>default Page</description>
+        <from-view-id>/pages/default.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{customer.login()}</from-action>
+            <from-outcome>valide</from-outcome>
+            <to-view-id>/pages/success.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    -->
+    <navigation-rule>
+        <description>Login Page</description>
+        <from-view-id>/login/login.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{user.login()}</from-action>
+            <from-outcome>valid</from-outcome>
+            <to-view-id>/pages/index.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{user.login()}</from-action>
+            <from-outcome>invalid</from-outcome>
+            <to-view-id>/pages/failed.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <description>Index Page</description>
+        <from-view-id>/pages/index.xhtml</from-view-id>
+        <navigation-case>
+        	<!-- <from-action>#{patientBean.isPatient()}</from-action>-->
+            <from-outcome>patientCheckIn</from-outcome>
+            <to-view-id>/patientCheckIn.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    
+    <!-- This navigation checks if Patient exist in the database -->
+    <navigation-rule>
+        <description>Patient Check In Page</description>
+        <from-view-id>/pages/patientCheckIn.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{patientInfoBean.isPatient}</from-action>
+            <from-outcome>valid</from-outcome>
+            <to-view-id>/pages/patientInfoDisplay.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{patientInfoBean.isPatient()}</from-action>
+            <from-outcome>invalid</from-outcome>
+            <to-view-id>/pages/patientCheckIn.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!-- This navigation link to patientInfo page after click Schedule Appointment -->
+    <navigation-rule>
+        <description>Schedule Appointment Page</description>
+        <from-view-id>/pages/index.xhtml</from-view-id>
+        <navigation-case>
+        	<from-outcome>schedule</from-outcome>
+            <to-view-id>/pages/schedule.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    
+    <!-- This navigation link to patientInfo page after click create new patient -->
+    <navigation-rule>
+        <description>Patient Info Page</description>
+        <from-view-id>/pages/index.xhtml</from-view-id>
+        <navigation-case>
+        	<from-outcome>patientInfo</from-outcome>
+            <to-view-id>/pages/patientInfo.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    
+    <!-- This navigation link to report page -->
+    <navigation-rule>
+        <description>Report Page</description>
+        <from-view-id>/pages/index.xhtml</from-view-id>
+        <navigation-case>
+        	<from-outcome>report</from-outcome>
+            <to-view-id>/pages/report.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    
+    <!--  This navigation link to success page after user click save -->
+    <navigation-rule>
+        <description>patientInfo Page</description>
+        <from-view-id>/pages/patientInfo.xhtml</from-view-id>
+        <navigation-case>
+        	<from-action>#{patientBean.savePatient()}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/pages/success.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+
+	<!-- This navigation link to success page after user click update -->
+	<navigation-rule>
+        <description>patientInfo Page</description>
+        <from-view-id>/pages/patientInfo.xhtml</from-view-id>
+        <navigation-case>
+        	<from-action>#{patientBean.updatePatient()}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/pages/success.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    
+    <!-- This navigation link back to index page after user click cancel -->
+	<navigation-rule>
+	<description>patientInfo Page</description>
+	<from-view-id>/pages/patientInfo.xhtml</from-view-id>
+	<navigation-case>
+		<!--  <from-action>#{patientBean.updatePatient()}</from-action> -->
+		<from-outcome>index</from-outcome>
+		<to-view-id>/pages/index.xhtml</to-view-id>
+		<redirect />
+	</navigation-case>
+</navigation-rule>
+
+</faces-config>

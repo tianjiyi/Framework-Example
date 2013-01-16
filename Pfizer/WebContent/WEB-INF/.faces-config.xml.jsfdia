@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#pages#index.xhtml" PATH="/pages/index.xhtml"
+  SHAPE="256,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#index.xhtml:0" NAME="item"
+   PATH="/pages/index.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="patientCheckIn::#patientCheckIn.xhtml"
+    NAME="output" PATH="/patientCheckIn.xhtml"
+    TARGET="rules:#patientCheckIn.xhtml" TITLE="patientCheckIn" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#pages#index.xhtml:1" NAME="item1"
+   PATH="/pages/index.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="schedule::#pages#schedule.xhtml"
+    NAME="output" PATH="/pages/schedule.xhtml"
+    TARGET="rules:#pages#schedule.xhtml" TITLE="schedule" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#pages#index.xhtml:2" NAME="item2"
+   PATH="/pages/index.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="patientInfo::#pages#patientInfo.xhtml"
+    NAME="output" PATH="/pages/patientInfo.xhtml"
+    TARGET="rules:#pages#patientInfo.xhtml" TITLE="patientInfo" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#pages#index.xhtml:3" NAME="item3"
+   PATH="/pages/index.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="report::#pages#report.xhtml" NAME="output"
+    PATH="/pages/report.xhtml" TARGET="rules:#pages#report.xhtml"
+    TITLE="report" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#patientCheckIn.xhtml"
+  PATH="/patientCheckIn.xhtml" SHAPE="512,17,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#patientInfo.xhtml"
+  PATH="/pages/patientInfo.xhtml" SHAPE="736,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#patientInfo.xhtml:0" NAME="item"
+   PATH="/pages/patientInfo.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="success:#{patientBean.savePatient()}:#pages#success.xhtml"
+    NAME="output" PATH="/pages/success.xhtml"
+    TARGET="rules:#pages#success.xhtml"
+    TITLE="#{patientBean.savePatient()}:success" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#pages#patientInfo.xhtml:1" NAME="item1"
+   PATH="/pages/patientInfo.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="success:#{patientBean.updatePatient()}:#pages#success.xhtml"
+    NAME="output" PATH="/pages/success.xhtml"
+    TARGET="rules:#pages#success.xhtml"
+    TITLE="#{patientBean.updatePatient()}:success" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#pages#patientInfo.xhtml:2" NAME="item2"
+   PATH="/pages/patientInfo.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="index::#pages#index.xhtml" NAME="output"
+    PATH="/pages/index.xhtml" TARGET="rules:#pages#index.xhtml"
+    TITLE="index" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#success.xhtml"
+  PATH="/pages/success.xhtml" SHAPE="976,17,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#schedule.xhtml"
+  PATH="/pages/schedule.xhtml" SHAPE="512,225,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#failed.xhtml"
+  PATH="/pages/failed.xhtml" SHAPE="256,241,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#report.xhtml"
+  PATH="/pages/report.xhtml" SHAPE="512,337,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#patientCheckIn.xhtml"
+  PATH="/pages/patientCheckIn.xhtml" SHAPE="736,241,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#patientCheckIn.xhtml:0" NAME="item"
+   PATH="/pages/patientCheckIn.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="valid:#{patientInfoBean.isPatient}:#pages#patientInfoDisplay.xhtml"
+    NAME="output" PATH="/pages/patientInfoDisplay.xhtml"
+    TARGET="rules:#pages#patientInfoDisplay.xhtml"
+    TITLE="#{patientInfoBean.isPatient}:valid" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="invalid:#{patientInfoBean.isPatient()}:#pages#patientCheckIn.xhtml"
+    NAME="output1" PATH="/pages/patientCheckIn.xhtml"
+    TARGET="rules:#pages#patientCheckIn.xhtml"
+    TITLE="#{patientInfoBean.isPatient()}:invalid" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#patientInfoDisplay.xhtml"
+  PATH="/pages/patientInfoDisplay.xhtml" SHAPE="880,593,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#login#login.xhtml" PATH="/login/login.xhtml"
+  SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#login#login.xhtml:0" NAME="item"
+   PATH="/login/login.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="valid:#{user.login()}:#pages#index.xhtml"
+    NAME="output" PATH="/pages/index.xhtml"
+    TARGET="rules:#pages#index.xhtml" TITLE="#{user.login()}:valid" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="invalid:#{user.login()}:#pages#failed.xhtml"
+    NAME="output1" PATH="/pages/failed.xhtml"
+    TARGET="rules:#pages#failed.xhtml" TITLE="#{user.login()}:invalid" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>

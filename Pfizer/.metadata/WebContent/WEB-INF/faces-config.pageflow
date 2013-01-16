@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13445579870680" configfile="/Pfizer/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="pages/login.xhtml" comment="Login Page" x="122" y="956" id="pf13445587055748" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf13446079373361 pf13446084846264" path="/login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/failed.xhtml" x="338" y="764" id="pf13446079373363" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf13446079373361" path="/pages/failed.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/index.xhtml" x="338" y="1148" id="pf13446084846265" referenceLink="//@navigationRule.8/@navigationCase.0/@toViewId|" outlinks="pf13446123710726 pf13450380185200 pf13450380185201 pf13452290882502" inlinks="pf13446084846264 pf13452288143321" path="/pages/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="patientCheckIn.xhtml" x="554" y="946" id="pf13446123710727" referenceLink="//@navigationRule.2/@navigationCase.1/@toViewId|" outlinks="pf13449578218811 pf13450380185212" inlinks="pf13446123710726 pf13449578218811" path="/patientCheckIn.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/PatientInfo.xhtml" x="122" y="1340" id="pf13449578218812" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" path="/pages/PatientInfoT.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/patientInfo.xhtml" x="770" y="1148" id="pf13450380185214" referenceLink="//@navigationRule.8/@fromViewId|" outlinks="pf13450380368126 pf13452185536380 pf13452288143321" inlinks="pf13450380185212 pf13450380185200" path="/pages/patientInfo.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/report.xhtml" x="554" y="178" id="pf13450380185215" referenceLink="//@navigationRule.5/@navigationCase.0/@toViewId|" inlinks="pf13450380185201" path="/pages/report.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/success.xhtml" x="986" y="1148" id="pf13450380368127" referenceLink="//@navigationRule.7/@navigationCase.0/@toViewId|" inlinks="pf13450380368126 pf13452185536380" path="/pages/success.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/schedule.xhtml" x="554" y="562" id="pf13452290882513" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" inlinks="pf13452290882502" path="/pages/schedule.xhtml"/>
+  <links id="pf13446079373361" target="pf13446079373363" source="pf13445587055748" outcome="invalid" fromaction="#{user.login()}"/>
+  <links id="pf13446084846264" target="pf13446084846265" source="pf13445587055748" outcome="valid" redirect="true" fromaction="#{user.login()}"/>
+  <links id="pf13446123710726" target="pf13446123710727" source="pf13446084846265" outcome="patientCheckIn" redirect="true"/>
+  <links id="pf13450380185212" target="pf13450380185214" source="pf13446123710727" outcome="valid" redirect="true" fromaction="#{patientBean.isPatient()}"/>
+  <links id="pf13450380185200" target="pf13450380185214" source="pf13446084846265" outcome="patientInfo" redirect="true"/>
+  <links id="pf13450380185201" target="pf13450380185215" source="pf13446084846265" outcome="report" redirect="true"/>
+  <links id="pf13450380368126" target="pf13450380368127" source="pf13450380185214" outcome="success" redirect="true" fromaction="#{patientBean.savePatient()}"/>
+  <links id="pf13452185536380" target="pf13450380368127" source="pf13450380185214" outcome="success" redirect="true" fromaction="#{patientBean.updatePatient()}"/>
+  <links id="pf13452288143321" target="pf13446084846265" source="pf13450380185214" outcome="index" redirect="true"/>
+  <links id="pf13452290882502" target="pf13452290882513" source="pf13446084846265" outcome="schedule" redirect="true"/>
+  <links id="pf13449578218811" target="pf13446123710727" source="pf13446123710727" outcome="invalid" fromaction="#{patientBean.isPatient()}">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+</pageflow:Pageflow>

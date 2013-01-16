@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.pfizer.model.PatientInfo" 
+        table="patientDB" >
+ 
+        <id name="patientId" type="long">
+            <column name="PATIENT_ID" />
+            <generator class="identity" />
+        </id>
+        <property name="patientFirstName" type="string">
+            <column name="PATIENT_FIRSTNAME" length="45" not-null="true" />
+        </property>
+        <property name="patientLastName" type="string">
+            <column name="PATIENT_LASTNAME" length="45" not-null="true" />
+        </property>
+        
+        <property name="address1" type="string">
+            <column name="ADDRESS1" length="45" not-null="true" />
+        </property>
+        
+        <property name="address2" type="string">
+            <column name="ADDRESS2" length="45" not-null="false" />
+        </property>
+        
+        <property name="address3" type="string">
+            <column name="ADDRESS3" length="45" not-null="false" />
+        </property>
+        
+        <property name="townCity" type="string">
+            <column name="TOWN_CITY" length="45" not-null="true" />
+        </property>
+        
+        <property name="county" type="string">
+            <column name="COUNTY" length="45" not-null="true" />
+        </property>
+        
+        <property name="country" type="string">
+            <column name="COUNTRY" length="45" not-null="true" />
+        </property>
+        
+        <property name="pps" type="string">
+            <column name="PPS" length="20" not-null="true" />
+        </property>
+        
+        <property name="medInsurance" type="string">
+            <column name="MEDINSURANCE" length="45" not-null="true" />
+        </property>
+        
+        <property name="medOther" type="string">
+            <column name="MED_OTHER" length="45" not-null="false" />
+        </property>
+        
+        <property name="insurancePolicy" type="string">
+            <column name="INSURANCE_POLICY" length="45" not-null="false" />
+        </property>
+        
+        <property name="insurancePlan" type="string">
+            <column name="INSURANCE_PLAN" length="45" not-null="false" />
+        </property>
+        
+        <property name="patientPhone" type="int">
+            <column name="PATIENT_PHONE" length="45" not-null="true" />
+        </property>
+         
+        <property name="dateOfBirth" type="date">
+            <column name="DATE_OF_BIRTH" length="45" not-null="true" />
+        </property>
+        
+        <property name="guardianFirstName" type="string">
+            <column name="GUARDIAN_FIRSTNAME" length="45" not-null="true" />
+        </property>
+        
+        <property name="guardianLastName" type="string">
+            <column name="GUARDIAN_LASTNAME" length="45" not-null="true" />
+        </property>
+        
+        <property name="guardianPhone" type="int">
+            <column name="GUARDIAN_PHONE" length="45" not-null="true" />
+        </property>
+        
+        <property name="medHistory" type="string">
+            <column name="MED_HISTORY" length="45" not-null="true" />
+        </property>
+        
+        <property name="decease" type="boolean">
+            <column name="DECEASE" length="45" not-null="true" />
+        </property>
+				       
+    </class>
+</hibernate-mapping>

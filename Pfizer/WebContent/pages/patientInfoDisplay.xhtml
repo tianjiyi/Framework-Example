@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+<h:head>
+</h:head>
+<h:body>
+	<ui:composition template="/template/common/commonLayout2.xhtml">
+
+		<ui:define name="content">
+	
+			<h2>Home page</h2>
+
+			<h:form>
+				<table>
+					<tr>
+						<td>Patient Number</td>
+						<td><h:inputText id="patientId" value="#{patientInfoBean.patient.patientId}" size="20"
+								required="true" label="PatientId">
+								</h:inputText>
+							<h:message for="patientId" style="color:red" />
+						</td>
+					</tr>
+					
+					<tr>
+						<td>Employee Id</td>
+						<td><h:inputText id="empId" value="#{patientInfoBean.patient.empId}" size="20"
+								required="true" label="EmpId">
+								</h:inputText>
+							<h:message for="empId" style="color:red" />
+						</td>
+					</tr>
+
+					<tr>
+						<td>First Name</td>
+						<td><h:inputText id="firstName" value="#{patientInfoBean.patient.firstName}" size="20"
+								required="true" label="FirstName"></h:inputText>
+							<h:message for="firstName" style="color:red" />
+						</td>
+					</tr>
+
+					<tr>
+						<td>Last Name</td>
+						<td><h:inputText id="lastName" value="#{patientInfoBean.patient.lastName}" size="20"
+								required="true" label="LastName"></h:inputText>
+							<h:message for="lastName" style="color:red" />
+						</td>
+					</tr>
+
+					<tr>
+						<td>Address 1</td>
+						<td><h:inputText id="address1" value="#{patientInfoBean.patient.address1}" size="20"
+								required="true" label="Address1"></h:inputText>
+							<h:message for="address1" style="color:red" />	
+						</td>
+					</tr>
+
+					<tr>
+						<td>Address 2</td>
+						<td><h:inputText id="address2" value="#{patientInfoBean.patient.address2}" size="20"
+								required="false" label="Address2"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>Address 3</td>
+						<td><h:inputText id="address3" value="#{patientInfoBean.patient.address3}" size="20"
+								required="false" label="Address3"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>Town/City</td>
+						<td><h:inputText id="towncity" value="#{patientInfoBean.patient.city}" size="20"
+								required="true" label="Town/City"></h:inputText>
+							<h:message for="towncity" style="color:red" />
+						</td>
+					</tr>
+
+					<tr>
+						<td>County</td>
+						<td><h:selectOneMenu value="#{patientInfoBean.patient.state}">
+								<f:selectItem itemValue="allegheny" itemLabel="Allegheny" />
+								<f:selectItem itemValue="south fair.." itemLabel="South Fair.." />
+							</h:selectOneMenu></td>
+					</tr>
+
+					<tr>
+						<td>Country</td>
+						<td><h:selectOneMenu value="#{patientInfoBean.patient.country}">
+								<f:selectItem itemValue="china" itemLabel="China" />
+								<f:selectItem itemValue="usa" itemLabel="USA" />
+							</h:selectOneMenu></td>
+
+					</tr>
+
+					<tr>
+						<td>PPS#</td>
+						<td><h:inputText id="ppsNumber" value="#{patientInfoBean.patient.pps}" size="20"
+								required="true" label="PPSNumber"></h:inputText>
+							<h:message for="ppsNumber" style="color:red" />
+						</td>
+					</tr>
+
+					<tr>
+						<td>Medical Insurance</td>
+						
+							
+					</tr>
+					
+					<tr>
+						<td>Insurance ID</td>
+						<td><h:inputText id="insuranceID" value="#{patientInfoBean.patient.insurance.insuranceId}"
+								size="20" required="true" label="Insurance ID"></h:inputText>
+							<h:message for="insuranceID" style="color:red" />
+						</td>
+					</tr>
+
+					<tr>
+						<td>Insurance Policy Number</td>
+						<td><h:inputText id="insurancePolicyNumber" value="#{patientInfoBean.patient.insurance.insurancePolicy}"
+								size="20" required="true" label="Insurance Policy Number"></h:inputText>
+							<h:message for="insurancePolicyNumber" style="color:red" />
+						</td>
+					</tr>
+
+					<tr>
+						<td>Insurance Plan</td>
+						<td><h:inputText id="insurancePlan" value="#{patientInfoBean.patient.insurance.insurancePlan}" size="20"
+								required="true" label="Insurance Plan"></h:inputText>
+							<h:message for="insurancePlan" style="color:red" />
+						</td>
+					</tr>
+
+					<tr>
+						<td>Phone Number</td>
+						<td><h:inputText id="phoneNumber" value="#{patientInfoBean.patient.phone}" size="20"
+								required="true" label="Phone Number"></h:inputText>
+							<h:message for="phoneNumber" style="color:red" />
+						</td>
+					</tr>
+
+					<tr>
+						<td>Date of Birth</td>
+						<td><h:inputText id="dateOfBirth" value="#{patientInfoBean.patient.dateOfBirth}" size="20"
+								required="true" label="Date of Birth">
+								<f:convertDateTime pattern="MM-dd-yyyy"/>
+								</h:inputText>
+							<h:message for="dateOfBirth" style="color:red" />
+						</td>
+					</tr>
+
+				
+					
+					<tr>
+						<td>Account ID</td>
+						<td><h:inputText id="patientAccountID" value="#{patientInfoBean.patient.payAccount.accountId}"
+								size="20" required="true"
+								label="Patient Account Number"></h:inputText>
+							<h:message for="patientAccountID" style="color:red" />
+						</td>
+					</tr>
+					
+					<tr>
+						<td>Payment Method</td>
+						<td><h:inputText id="paymentMethod" value="#{patientInfoBean.patient.payAccount.payMethod}"
+								size="20" required="true"
+								label="Patient Account Method"></h:inputText>
+							<h:message for="paymentMethod" style="color:red" />
+						</td>
+					</tr>
+					
+					<tr>
+						<td>Payment details</td>
+						<td><h:inputText id="paymentDetail" value="#{patientInfoBean.patient.payAccount.details}"
+								size="20" required="true"
+								label="Patient Account Details"></h:inputText>
+							<h:message for="paymentDetail" style="color:red" />
+						</td>
+					</tr>
+
+					<tr>
+						<td>Medical History</td>
+						<td><h:inputTextarea id="medicalHistory" value="#{patientInfoBean.patient.medHistory}" size="20"
+								required="false" label="Medical History"></h:inputTextarea>
+							<h:message for="medicalHistory" style="color:red" />
+						</td>
+						<td><h:selectBooleanCheckbox value="#{patientInfoBean.patient.decease}" />Decease</td>
+					</tr>
+				</table>
+			
+				<h:commandButton type="submit" value="Save" action="#{patientInfoBean.savePatient}" />
+				<h:button id="button"  value="Cancel" outcome="index" /> 
+
+			</h:form> 
+	</ui:define>
+</ui:composition>
+
+</h:body>
+</html>

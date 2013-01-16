@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+ 
+<!-- Hiernate session factory -->
+<bean id="sessionFactory" 
+     class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+ 
+    <property name="dataSource">
+      <ref bean="dataSource"/>
+    </property>
+ 
+    <property name="hibernateProperties">
+       <props>
+         <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+         <prop key="hibernate.show_sql">true</prop>
+         <prop key="hibernate.hbm2ddl.auto">update</prop>
+        
+       </props>
+    </property>
+ 
+    <property name="mappingResources">
+	<list>
+		<value>com/pfizer/hibernate/User.hbm.xml</value>
+		<value>com/pfizer/hibernate/Patient.hbm.xml</value>
+		<value>com/pfizer/hibernate/Appointment.hbm.xml</value>
+		<value>com/pfizer/hibernate/Bill.hbm.xml</value>
+		<value>com/pfizer/hibernate/Insurance.hbm.xml</value>
+		<value>com/pfizer/hibernate/Employee.hbm.xml</value>
+		<value>com/pfizer/hibernate/PayAccount.hbm.xml</value>
+	</list>
+	</property>	
+     
+  
+</bean>
+</beans>
+

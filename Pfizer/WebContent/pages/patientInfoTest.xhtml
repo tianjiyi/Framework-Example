@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      >
+      
+<h:head>
+	<h:outputStylesheet library="css" name="table-style.css" />
+</h:head>
+<h:body>
+
+	
+
+		
+			<h2>Home page</h2>
+
+			<h:form>
+				<table>
+					<tr>
+						<td>Patient Number</td>
+						<td><h:inputText id="patientNumber" value="" size="20"
+								required="true" label="PatientNumber"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>First Name</td>
+						<td><h:inputText id="firstName" value="" size="20"
+								required="true" label="FirstName"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>Last Name</td>
+						<td><h:inputText id="lastName" value="" size="20"
+								required="true" label="LastName"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>Address 1</td>
+						<td><h:inputText id="address1" value="" size="40"
+								required="true" label="Address1"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>Address 2</td>
+						<td><h:inputText id="address2" value="" size="40"
+								required="false" label="Address2"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>Address 3</td>
+						<td><h:inputText id="address3" value="" size="40"
+								required="false" label="Address3"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>Town/City</td>
+						<td><h:inputText id="towncity" value="" size="20"
+								required="true" label="Town/City"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>County</td>
+						<td><h:selectOneMenu value="">
+								<f:selectItem itemValue="allegheny" itemLabel="Allegheny" />
+								<f:selectItem itemValue="south fair.." itemLabel="South Fair.." />
+							</h:selectOneMenu></td>
+					</tr>
+
+					<tr>
+						<td>Country</td>
+						<td><h:selectOneMenu value="">
+								<f:selectItem itemValue="thailand" itemLabel="Thailand" />
+								<f:selectItem itemValue="usa" itemLabel="USA" />
+							</h:selectOneMenu></td>
+
+					</tr>
+
+					<tr>
+						<td>PPS#</td>
+						<td><h:inputText id="ppsNumber" value="" size="20"
+								required="true" label="PPSNumber"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>Medical Insurance</td>
+						<td><h:selectOneMenu value="">
+								<f:selectItem itemValue="upmc" itemLabel="UPMC" />
+								<f:selectItem itemValue="highmark" itemLabel="Highmark" />
+								<f:selectItem itemValue="other" itemLabel="Other" />
+							</h:selectOneMenu></td>
+
+						<td><h:inputText id="other" value="" size="30"
+								required="true" label="Other"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>Insurance Policy Number</td>
+						<td><h:inputText id="insurancePolicyNumber" value=""
+								size="20" required="false" label="Insurance Policy Number"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>Insurance Plan</td>
+						<td><h:inputText id="insurancePlan" value="" size="20"
+								required="false" label="Insurance Plan"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>Phone Number</td>
+						<td><h:inputText id="phoneNumber" value="" size="20"
+								required="true" label="Phone Number"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>Date of Birth</td>
+						<td><p:calendar navigator="true" yearRange="1912:2012" showOn="button"></p:calendar></td>
+					</tr>
+
+					<tr>
+						<td>Patient/guardian name</td>
+						<td><h:inputText id="patientGuardianName" value="" size="20"
+								required="true" label="Patient Guardian Name"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>Guardian Last Name</td>
+						<td><h:inputText id="patientGuardianLastName" value=""
+								size="20" required="true" label="Patient Guardian Last Name"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>Guardian Contact number</td>
+						<td><h:inputText id="patientGuardianContactNumber" value=""
+								size="20" required="true"
+								label="Patient Guardian Contact Number"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>Medical History</td>
+						<td><h:inputTextarea id="medicalHistory" value="" size="20"
+								required="true" label="Medical History"></h:inputTextarea></td>
+						<td><h:selectBooleanCheckbox value="" />Decease</td>
+					</tr>
+				</table>
+				<h:commandButton value="Update" />
+				<h:commandButton value="Save" />
+				<h:commandButton value="Cancel" />
+
+			</h:form>
+		
+
+</h:body>
+</html>

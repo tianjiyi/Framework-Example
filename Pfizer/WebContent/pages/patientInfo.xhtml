@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+<h:head>
+</h:head>
+<h:body>
+
+	<ui:composition template="/template/common/commonLayout2.xhtml">
+
+		<ui:define name="content">
+			<h2>Home page</h2>
+
+			<h:form>
+				<table>
+					<tr>
+						<td>Patient Number</td>
+						<td><h:inputText id="patientId" value="#{patientBean.patientId}" size="20"
+								required="true" label="PatientId">
+								<f:validateLongRange minimum="1" maximum="1000"/>
+								</h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>First Name</td>
+						<td><h:inputText id="firstName" value="#{patientBean.patientFirstName}" size="20"
+								required="true" label="FirstName"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>Last Name</td>
+						<td><h:inputText id="lastName" value="#{patientBean.patientLastName}" size="20"
+								required="true" label="LastName"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>Address 1</td>
+						<td><h:inputText id="address1" value="#{patientBean.address1}" size="20"
+								required="true" label="Address1"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>Address 2</td>
+						<td><h:inputText id="address2" value="#{patientBean.address2}" size="20"
+								required="false" label="Address2"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>Address 3</td>
+						<td><h:inputText id="address3" value="#{patientBean.address3}" size="20"
+								required="false" label="Address3"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>Town/City</td>
+						<td><h:inputText id="towncity" value="#{patientBean.townCity}" size="20"
+								required="true" label="Town/City"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>County</td>
+						<td><h:selectOneMenu value="#{patientBean.county}">
+								<f:selectItem itemValue="allegheny" itemLabel="Allegheny" />
+								<f:selectItem itemValue="south fair.." itemLabel="South Fair.." />
+							</h:selectOneMenu></td>
+					</tr>
+
+					<tr>
+						<td>Country</td>
+						<td><h:selectOneMenu value="#{patientBean.country}">
+								<f:selectItem itemValue="china" itemLabel="China" />
+								<f:selectItem itemValue="usa" itemLabel="USA" />
+							</h:selectOneMenu></td>
+
+					</tr>
+
+					<tr>
+						<td>PPS#</td>
+						<td><h:inputText id="ppsNumber" value="#{patientBean.pps}" size="20"
+								required="true" label="PPSNumber"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>Medical Insurance</td>
+						<td><h:selectOneMenu value="#{patientBean.medInsurance}">
+								<f:selectItem itemValue="upmc" itemLabel="UPMC" />
+								<f:selectItem itemValue="highmark" itemLabel="Highmark" />
+								<f:selectItem itemValue="other" itemLabel="Other" />
+							  	<f:ajax render="input" /> 
+							</h:selectOneMenu></td>
+							  
+							<td><h:panelGroup id="input">
+							<h:inputText value="#{patientBean.medOther}" rendered="#{patientBean.medInsurance == 'other'}" required="false" />
+							</h:panelGroup></td> 
+
+							<!--  
+						 <td><h:inputText id="other" value="#{patientBean.medOther}" size="30"
+								required="false" label="Other"></h:inputText></td>
+							-->
+							
+					</tr>
+
+					<tr>
+						<td>Insurance Policy Number</td>
+						<td><h:inputText id="insurancePolicyNumber" value="#{patientBean.insurancePolicy}"
+								size="20" required="false" label="Insurance Policy Number"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>Insurance Plan</td>
+						<td><h:inputText id="insurancePlan" value="#{patientBean.insurancePlan}" size="20"
+								required="false" label="Insurance Plan"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>Phone Number</td>
+						<td><h:inputText id="phoneNumber" value="#{patientBean.patientPhone}" size="20"
+								required="true" label="Phone Number"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>Date of Birth</td>
+						<td><h:inputText id="dateOfBirth" value="#{patientBean.dateOfBirth}" size="20"
+								required="true" label="Date of Birth">
+								<f:convertDateTime pattern="MM-dd-yyyy"/>
+								</h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>Patient/guardian name</td>
+						<td><h:inputText id="patientGuardianName" value="#{patientBean.guardianFirstName}" size="20"
+								required="true" label="Patient Guardian Name"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>Guardian Last Name</td>
+						<td><h:inputText id="patientGuardianLastName" value="#{patientBean.guardianLastName}"
+								size="20" required="true" label="Patient Guardian Last Name"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>Guardian Contact number</td>
+						<td><h:inputText id="patientGuardianContactNumber" value="#{patientBean.guardianPhone}"
+								size="20" required="true"
+								label="Patient Guardian Contact Number"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td>Medical History</td>
+						<td><h:inputTextarea id="medicalHistory" value="#{patientBean.medHistory}" size="20"
+								required="true" label="Medical History"></h:inputTextarea></td>
+						<td><h:selectBooleanCheckbox value="#{patientBean.decease}" />Decease</td>
+					</tr>
+				</table>
+				<h:commandButton type="submit" value="Update" action="#{patientBean.updatePatient}" />
+				<h:commandButton type="submit" value="Save" action="#{patientBean.savePatient}" />
+				<h:button id="button"  value="Cancel" outcome="index" /> 
+
+			</h:form> 
+		</ui:define>
+	</ui:composition>
+
+
+</h:body>
+</html>

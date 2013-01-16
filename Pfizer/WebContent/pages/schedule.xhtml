@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui"
+xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+<h:body>
+<ui:composition template="/template/common/commonLayout2.xhtml">
+		<ui:define name="content">
+		<h:outputScript library="js" name="http://code.jquery.com/jquery-latest.js" />
+		<h:outputScript library="js">
+   			 $ = jQuery; 
+     			$(document).ready(function(){
+	 				$("#flip").click(function(){
+	      			$("#wrapper").slideToggle("slow");
+	    		});
+	  		});
+     	</h:outputScript>
+	<div id="panel" style="display:none">
+		<p>Because time is valuable, we deliver quick and easy learning.</p>
+		<p>At W3Schools, you can study everything you need to learn, in an accessible and handy format.</p>
+	</div>
+	
+
+<h:form id="top_form" name="top_form">
+	<h:selectOneMenu id="select_doctors">
+		<f:selectItem id="s1" itemLable="doctor1" itemValue="doctor1"/>
+		<f:selectItem id="s2" itemLable="doctor2" itemValue="doctor2"/>
+	</h:selectOneMenu>
+	<h:outputText value="Start_Date"/><p:calendar/>
+	<h:outputText value="End_Date"/><p:calendar/>
+	<h:commandButton id="search" value="search"><f:ajax render="slots" /></h:commandButton> 
+	<p id="flip">Show/Hide Panel</p>
+	<div id="wrapper" style="display:none">
+	<h:dataTable id="slots" value="#{searchBean.availableSlotsList}" var="s"  >
+    		
+    		<h:column>
+    			<f:facet name="header">
+    				Appointment ID
+    			</f:facet>
+    				#{s.appointmentId}
+    		</h:column>
+    		<h:column>
+    			<f:facet name="header">
+    				Start_Date
+				</f:facet>
+    				#{s.startDate}
+    		</h:column>
+ 			<h:column>
+    			<f:facet name="header">
+    				End_Date
+				</f:facet>
+    				#{s.endDate}
+    		</h:column>
+    		<h:column>
+    			<f:facet name="header">
+    				Doctor_Name
+				</f:facet>
+    				#{s.doctor.doctorId}
+    		</h:column>
+    	</h:dataTable>   
+    	</div>
+</h:form>
+<h:form id="main_form">
+
+    <p:growl id="messages" showDetail="true" />
+
+    <p:schedule value="#{scheduleController.lazyEventModel}" 
+    			centerTemplate="month, agendaWeek, agendaDay" 
+    			widgetVar="myschedule" 
+    			allDaySlot="false"
+    			minTime="8:00"
+                maxTime="18:00"
+                aspectRatio="2">
+
+        <p:ajax event="dateSelect" listener="#{scheduleController.onDateSelect}" update="eventDetails" oncomplete="eventDialog.show()" />
+        <p:ajax event="eventSelect" listener="#{scheduleController.onEventSelect}" update="eventDetails" oncomplete="eventDialog.show()" />
+        <p:ajax event="eventMove" listener="#{scheduleController.onEventMove}" update="messages" />
+        <p:ajax event="eventResize" listener="#{scheduleController.onEventResize}" update="messages" />
+
+    </p:schedule>
+
+    <p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip">
+        <h:panelGrid id="eventDetails" columns="2">
+            <h:outputLabel for="title" value="Title:" />
+            <p:inputText id="title" value="#{scheduleController.event.title}" required="true"/>
+            
+            <h:outputLabel for="id" value="id:" />
+            <h:outputText value="#{scheduleController.event.id}"/>
+           
+            <h:outputLabel for="from" value="from:" />
+            <h:outputText value="#{scheduleController.event.startDate}"/>
+
+            <h:outputLabel for="to" value="To:" />
+            <h:outputText value="#{scheduleController.event.endDate}"/>
+
+       		<p:commandButton value="Save" style="float:left;"  actionListener="#{scheduleController.addEvent}" oncomplete="myschedule.update();eventDialog.hide();"/>
+            <p:commandButton value="Remove" style="float:left;" actionListener="#{scheduleController.removeEvent}" oncomplete="myschedule.update();eventDialog.hide();"/> 
+            
+        </h:panelGrid>
+    </p:dialog>
+
+</h:form>
+</ui:define>
+</ui:composition>
+</h:body>
+</html>
