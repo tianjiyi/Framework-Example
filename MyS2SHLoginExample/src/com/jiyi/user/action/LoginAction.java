@@ -6,7 +6,7 @@ import com.jiyi.user.bo.UserBo;
 import com.jiyi.user.model.User;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class LoginAction extends ActionSupport {
+public class LoginAction {
 	
 	private UserBo userBo;
 	private String name;
